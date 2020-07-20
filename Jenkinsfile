@@ -8,12 +8,12 @@ pipeline {
         stage('Build') {
             steps {
               echo 'Building..'
-              sh npm install
+              sh 'npm install'
             }
         }
         stage('Test') {
             steps {
-                sh ng test
+                sh 'ng test'
             }
         }
         stage('e2e') {
