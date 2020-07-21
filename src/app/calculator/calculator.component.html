@@ -1,0 +1,20 @@
+<h2>Resistance: {{ resistance }}M -/+ {{ tolerance }}% </h2>
+<div class="form-group">
+<form>
+  <select name="band1">
+    <option *ngFor="let color of colors">{{ color }}</option>
+  </select>
+  <select name="band2">
+    <option *ngFor="let color of colors">{{ color }}</option>
+  </select>
+  <select name="band3">
+    <option *ngFor="let color of colors">{{ color }}</option>
+  </select>
+  <select name="band4">
+    <option *ngFor="let color of colors">{{ color }}</option>
+  </select>
+  <select name="band5">
+    <option *ngFor="let color of colors">{{ color }}</option>
+  </select>
+</form>
+</div>
