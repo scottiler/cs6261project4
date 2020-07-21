@@ -1,5 +1,5 @@
 
-FROM node:11.11.0
+FROM node:12.0.0
 
 LABEL "maintainer"="piler1@mmy.westga.edu"
 
@@ -18,15 +18,16 @@ RUN mkdir -p /var/log/supervisor
 ADD ./supervisord/conf.d/* $SCPATH/
 
 # Application Code
-ADD *.js* $AP/
+# ADD *.js* $AP/
 
 WORKDIR $AP
+WORKDIR /usr/src/app
 
 RUN npm install
-RUN sudo npm install -g @angular/cli
-RUN ng build cs6261project4
-RUN sudo npm install -g http-server
-RUN npx http-server -p4200
-
-
+RUN npm install -g @angular/cli
+# RUN ng build cs6261project4
+RUN npm install -g http-server
+# RUN npx http-server -p4200
 CMD ["supervisord", "-n"]
+
+CMD script.sh
