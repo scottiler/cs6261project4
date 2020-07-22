@@ -1,5 +1,5 @@
 
-FROM node:12.0.0
+FROM node:14.0.0
 
 LABEL "maintainer"="piler1@mmy.westga.edu"
 
@@ -18,10 +18,10 @@ RUN mkdir -p /var/log/supervisor
 ADD ./supervisord/conf.d/* $SCPATH/
 
 # Application Code
-# ADD *.js* $AP/
+ ADD *.js* $AP/
 
-WORKDIR $AP
-WORKDIR /usr/src/app
+#WORKDIR $AP
+WORKDIR /src/app
 
 RUN npm install
 RUN npm install -g @angular/cli
