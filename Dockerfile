@@ -16,10 +16,26 @@ RUN mkdir -p /var/log/supervisor
 
 # Supervisor Configuration
 ADD ./supervisord/conf.d/* $SCPATH/
-#COPY ./src
+COPY script.sh ./src
+RUN echo $(pwd)
+#RUN chmod +x ./src/script.sh
 
 # Application Code
  ADD *.js* $AP/
 
  WORKDIR $AP
-CMD srcript.sh
+ #WORKDIR /src
+
+ RUN npm install
+ RUN npm install -g @angular/cli
+ RUN npm install -g http-server
+
+
+
+ CMD ["supervisord", "-n"]
+ WORKDIR /src
+ CMD ["script.sh","/bash/bin"]
+
+# docker build -t cs6261project4:testimage  .
+# docker run -d -it --name="testcontainer" -p 4200:8080 -v ./app cs6261project4:testimage /bin/bash
+# mount | grep data
